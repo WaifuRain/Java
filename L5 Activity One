@@ -1,0 +1,14 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+class Lesson_5_Activity_One {
+    public static void main(String[] args) {
+      
+      Scanner scan = new Scanner(System.in);
+        double x = scan.nextDouble();
+        double y = scan.nextDouble();
+        System.out.println(y - x);
+
+
+    }
+}
