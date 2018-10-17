@@ -1,0 +1,18 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+class Lesson_4_Activity_Two {
+    public static void main(String[] args) {
+      
+        Scanner scan = new Scanner(System.in);
+        String n;
+        int a;
+        System.out.println("Hi there. What is your name?");
+        n = scan.nextLine();
+        System.out.println("Hi " + n + ". How old are you?");
+        a = scan.nextInt();
+        int x = 100 - a;
+        System.out.println(n + ", you will be 100 in " + x + " years.");
+
+    }
+}
