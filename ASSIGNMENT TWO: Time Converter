@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+
+class Main {
+    public static void main(String[] args) {
+      
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the Unix Epoch.");
+        int t = scan.nextInt();
+        System.out.println("   ");
+        System.out.println("Seconds since Unix Epoch: ");
+        System.out.println(t);
+        System.out.println("   ");
+        int second = t % 60;  
+        int minute = (t / 60) % 60;  
+        int hour = (t / 60 / 60) % 24;  
+        int days = (t / 60 / 60 / 24);  
+        int years = (days / 360);  
+        int year = 1970 + years;
+        int month = (t / 60 / 60 / 24 / 30) % 12;
+        System.out.println("Year: " + year);
+        System.out.println("Month: " + month);
+        System.out.println("Day: " + days % 30);
+        System.out.println("Hour: " + hour);
+        System.out.println("Min: " + minute);
+        System.out.println("Sec: " + second);
+        
+
+
+    }
+}
