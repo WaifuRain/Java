@@ -1,0 +1,18 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+
+class Lesson_11_Activity_Two {   
+public static void main(String[] args) 
+   { 
+   Scanner scan = new Scanner(System.in);
+   System.out.println("Decimal Value: ");
+   double userinput = scan.nextDouble();
+   if (userinput == 48.729) {
+     System.out.println("YES");
+    }
+   if (userinput != 48.729) {
+     
+   }
+}
+}
