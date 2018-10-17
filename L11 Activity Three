@@ -1,0 +1,19 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+
+class Lesson_11_Activity_Three {   
+public static void main(String[] args) 
+   { 
+   Scanner scan = new Scanner(System.in);
+   System.out.println("Integer 1: ");
+   int uinput1 = scan.nextInt();
+   System.out.println("Integer 2: ");
+   int uinput2 = scan.nextInt();
+   if (uinput1 == uinput2) {
+     System.out.println("YES");
+    }
+   if (uinput1 != uinput2) {
+    }
+}
+}
