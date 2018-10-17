@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+class Lesson_12_Activity_One {
+    public static void main(String[] args)
+     {
+     Scanner scan = new Scanner(System.in);
+     System.out.println("Input three integers.");
+     System.out.println("Integer 1: ");
+     int x = scan.nextInt();
+     System.out.println("Integer 2: ");
+     int y = scan.nextInt();
+     System.out.println("Integer 3: ");
+     int z = scan.nextInt();
+     double ab = ((double)x + (double)y + (double)z) / 3;
+     if (ab >= 89.5) {
+       System.out.println("ABOVE AVERAGE");
+     }
+     if (ab < 89.5) { 
+     }
+     
+    }
+}
