@@ -1,0 +1,27 @@
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        // Declare Scanner and variables
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Input your IC Grades:");
+        System.out.println("A1: ");
+        double a1 = scan.nextDouble();
+        System.out.println("A2: ");
+        double a2 = scan.nextDouble();
+        System.out.println("A3: ");
+        double a3 = scan.nextDouble();
+        System.out.println("A4: ");
+        double a4 = scan.nextDouble();
+        System.out.println("B1: ");
+        double b1 = scan.nextDouble();
+        System.out.println("B2: ");
+        double b2 = scan.nextDouble();
+        System.out.println("B3: ");
+        double b3 = scan.nextDouble();
+        System.out.println("B4: ");
+        double b4 = scan.nextDouble();
+        double average = (a1+a2+a3+a4+b1+b2+b3+b4)/8;
+        System.out.println("Current grade average is:" + average);
+    }
+}
