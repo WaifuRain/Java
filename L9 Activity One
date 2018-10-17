@@ -1,0 +1,15 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+class Lesson_9_Activity_One {
+    public static void main(String[] args) {
+      
+        double x = Math.random();
+        int range = 10;
+        int min = 1;
+        int y = (int)(x*range) + min;
+        System.out.println(y);
+
+
+    }
+}
