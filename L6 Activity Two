@@ -1,0 +1,15 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+class Lesson_6_Activity_Two {
+    public static void main(String[] args) {
+      
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Please input a decimal number: ");
+        double x = scan.nextDouble();
+        int y = (int)x;
+        System.out.println("Answer: " + y);
+
+
+    }
+}
