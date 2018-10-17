@@ -1,0 +1,18 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+
+class Lesson_11_Activity_Four {   
+public static void main(String[] args) 
+   { 
+   Scanner scan = new Scanner(System.in);
+   System.out.println("Enter an Integer: ");
+   int uinput = scan.nextInt();
+   if (uinput % 2 == 0) {
+     System.out.println("Even");
+    }
+   if (uinput % 2 != 0) {
+     System.out.println("Odd");
+    }
+}
+}
