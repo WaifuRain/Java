@@ -1,0 +1,24 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+class Lesson_13_Activity_Five {
+    public static void main(String[] args)
+     {
+     Scanner scan = new Scanner(System.in);
+     double x = Math.random();
+     double y = Math.random();
+     int range = 12;
+     int min = 1;
+     int rand = (int)(x*range) + min;
+     int rand2 = (int)(y*range) + min;
+     System.out.println("1st Number: " + rand);
+     System.out.println("2nd Number: " + rand2);
+     System.out.println("Multiply the two numbers.");
+     int answer = scan.nextInt();
+     if (answer == rand * rand2) {
+      System.out.println("Correct!"); 
+     } else {
+      System.out.println("Wrong"); 
+     }
+    }
+}
