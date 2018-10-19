@@ -2,22 +2,22 @@ import java.util.Scanner;
 import java.lang.Math; 
 
 class Lesson_17_Activity_Two {
-    public static void main(String[] args)
-     {
-      Scanner scan = new Scanner(System.in);
-      System.out.println("Enter two numbers: ");
-      int x = scan.nextInt();
-      int y = scan.nextInt();
-      while (!(x >= y)){
-        if (x % 2 == 0) {
-         System.out.println(x);
-         x = x + 1;
-        } else {
-       x = x + 1;
+  public static void main(String[] args)
+  {
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Enter two numbers: ");
+    int x = scan.nextInt();
+    int y = scan.nextInt();
+    while (!(x >= y)){
+      if (x % 2 == 0) {
+        System.out.print(x + " ");
+        x = x + 1;
+      } else {
+        x = x + 1;
       }
-}
-      if ((y % 2) == 0) {
-         System.out.println(y); 
-        }
-}
+    }
+    if ((y % 2) == 0) {
+      System.out.println(y); 
+    }
+  }
 }
