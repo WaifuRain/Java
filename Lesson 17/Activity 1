@@ -1,0 +1,25 @@
+import java.util.Scanner;
+import java.lang.Math; 
+
+class Lesson_17_Activity_One {
+    public static void main(String[] args)
+     {
+      Scanner scan = new Scanner(System.in);
+      int count = 0;
+      int sum = 0;
+      int val = 0;
+        
+      System.out.println("Enter the Scores:");
+      while (val != -1) {
+        val = scan.nextInt();
+        if (val != -1)
+        {
+          count++;
+          sum = sum + val;
+        }
+      }
+      System.out.println("The average is: " + ((double)(sum) / count));
+      
+      
+}
+}
