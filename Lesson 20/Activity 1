@@ -1,0 +1,36 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+class Lesson_20_Activity {
+  public static void main(String[] args)
+  {
+    Scanner scan = new Scanner(System.in);
+    double MinLat = 90.0;
+    double MaxLat = -90.0;
+    double MinLon = 180.0;
+    double MaxLon = -180;
+    int cont = 1;
+    while (cont == 1) {
+      System.out.println("Please enter the latitude:");
+      double la = scan.nextDouble();
+      System.out.println("Please enter the longitude:");
+      double lo = scan.nextDouble();
+      if ((!(la >= -90 && la <= 90)) || (!(lo >= -180 && lo <= 180))) {
+        System.out.println("Incorrect Latitude or Longitude");
+      } else {
+        if (la > MaxLat) MaxLat = (double)la;
+        if (la < MinLat) MinLat = (double)la;
+        if (lo > MaxLon) MaxLon = (double)lo;
+        if (lo < MinLon) MinLon = (double)lo;
+        
+        System.out.println("Would you like to enter another location?");
+        cont = scan.nextInt();
+      }
+    }
+    System.out.println("Farthest North: " + MaxLat);
+    System.out.println("Farthest South: " + MinLat);
+    System.out.println("Farthest East: " + MaxLon);
+    System.out.println("Farthest West: " + MinLon);
+    
+  }
+}
