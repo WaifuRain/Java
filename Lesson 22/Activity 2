@@ -1,0 +1,22 @@
+import java.util.Scanner;
+import java.lang.Math; 
+
+class Lesson_22_Activity_Two {
+  public static void main(String[] args)
+  {
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Enter a string:");
+    String x = scan.nextLine();
+    int y = x.length();
+    int count = 0;
+    while (count < x.length()) {
+      int z = 0;
+      while (z < count) {
+        System.out.print("\t");
+        z++;
+      }
+      System.out.println(x.charAt(x.length() - x.length() + count));
+      count++;
+    }
+  }
+}
