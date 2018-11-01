@@ -1,0 +1,21 @@
+import java.util.Scanner;
+import java.lang.Math; 
+
+class Lesson_24_Activity_Three {
+  public static void main(String[] args)
+  {
+    Scanner scan = new Scanner(System.in);
+    int startingnum = scan.nextInt();
+    if (startingnum <= 100) {
+      int n = 0;
+      int list [] = new int[100 - startingnum];
+      for (int i = startingnum; i == 100; i++) {
+        list[n] = i;
+        System.out.print(list[n] + " ");
+        n++;
+      }
+    } else {
+     System.out.println("error"); 
+    }
+  }
+}
