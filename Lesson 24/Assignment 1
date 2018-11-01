@@ -1,0 +1,19 @@
+import java.util.Scanner;
+import java.lang.Math; 
+
+class Lesson_24_Activity_One {
+    public static void main(String[] args)
+     {
+      int [] list = new int[10];
+      int n = 0;
+      for (int i = 23; i <= 89; i++) {
+       list[n] = i;
+       System.out.print(list[n] + " ");
+       n++;
+       if (n == 10) {
+        System.out.println("\n");
+        n = 0; 
+       }
+      }
+}
+}
