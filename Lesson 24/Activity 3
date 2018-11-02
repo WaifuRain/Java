@@ -5,17 +5,20 @@ class Lesson_24_Activity_Three {
   public static void main(String[] args)
   {
     Scanner scan = new Scanner(System.in);
+    System.out.println("Enter a number between 0 and 100:");
     int startingnum = scan.nextInt();
-    if (startingnum <= 100) {
+    if (startingnum < 0 || startingnum > 100) {
+      System.out.println("error");
+    } else { 
       int n = 0;
-      int list [] = new int[100 - startingnum];
-      for (int i = startingnum; i == 100; i++) {
-        list[n] = i;
-        System.out.print(list[n] + " ");
-        n++;
+      for (int i = startingnum; i <= 100; i++) {
+        System.out.print(i + " ");
+        if ((i % 20) == 0) {
+          System.out.print("\n");
+          n = 0;
+          n++;
+        }
       }
-    } else {
-     System.out.println("error"); 
     }
   }
 }
