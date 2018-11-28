@@ -1,0 +1,60 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+class Main {
+    public static void main(String[] args)
+    {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter your post:");
+        String original = scan.nextLine();
+        int enduser = original.indexOf('-');
+        String user = original.substring(0,enduser);
+        String post = original.substring(enduser + 1);
+        post = post.toLowerCase();
+        int qey = 0;
+        int uparrows = 0;
+        int dollar = 0;
+        boolean clean = true;
+        for (int i = 1; i <= post.length() - 1; i++) {
+            if (post.charAt(i) == '$') {
+                if (post.charAt(i - 1) == ' ') {
+                    if ((i < post.length()-1 && post.charAt(i + 1) == ' ') || (i == post.length()-1)) {
+                        clean = false;
+                        dollar++;
+                    }
+                }
+            }
+            if (post.charAt(i) == 'q') {
+                if (post.charAt(i - 1) == ' ') {
+                    if ((i < post.length()-2 && post.charAt(i + 1) == 'e') && post.charAt(i + 2) == 'y') {
+                        if ((i < post.length()-3 && post.charAt(i + 3) == ' ') || (i == post.length()-3)) {
+                            clean = false;
+                            qey++;
+                        }
+                    }
+                }
+            }
+            if (post.charAt(i) == '^')
+                if (post.charAt(i - 1) == ' ') {
+                    if ((i < post.length()-1 && post.charAt(i + 1) == '^')) {
+                        if ((i < post.length()-2 && post.charAt(i + 2) == ' ') || (i == post.length()-2)) {
+                            clean = false;
+                            uparrows++;
+                        }
+                    }
+                }
+        }
+
+        if (clean) {
+            System.out.println("Results:");
+            System.out.println("\nCLEAN"); 
+        } else {
+            System.out.println("Results:");
+            System.out.println("\nBAD");
+            System.out.println(user);
+            System.out.println("^^: " + uparrows);
+            System.out.println("qey: " + qey);
+            System.out.println("$: " + dollar);
+        }
+    }
+}
