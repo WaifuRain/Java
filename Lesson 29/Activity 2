@@ -1,0 +1,17 @@
+class Lesson_29_Activity_Two { // begin class
+
+  public static String[] list = { "every", "nearing", "checking", "food", "stand", "value" }; // list
+
+  public static void main(String[] args) { // begin main
+    for (int i = 0; i < list.length; i++){ // begin for loop
+      char c1 [] = new char[list[i].length()];
+
+    for (int a = 0; a < list[i].length(); a++){ // begin nested for loop
+      c1[a] = list[i].charAt(list[i].length() - 1 - a);
+
+    }// end nested for loop
+    System.out.println(c1);
+
+    } // end for loop
+  } // end main
+} // end class
