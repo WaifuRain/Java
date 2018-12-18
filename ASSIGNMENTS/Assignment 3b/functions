@@ -1,0 +1,207 @@
+import javax.xml.stream.events.EndElement;
+
+class func{
+public static class functions{
+  //functions go here
+  public static void EventSleep(){ // Sleep Event 
+    while(vars.variables.continuesleep != 0){
+    cls();
+    System.out.println(colors.ConsoleColors.PURPLE + "You continue to sleep." + colors.ConsoleColors.RESET);
+    for (int i = 0; i < 3; i++){
+    sleep(1000);
+    System.out.println(".");
+    }
+    vars.variables.minute += 10;
+    if (vars.variables.hour == 8 && vars.variables.minute == 40){
+      cls();
+      System.out.println(colors.ConsoleColors.PURPLE + "You fall into a deep sleep, and wake up an hour later." + colors.ConsoleColors.RESET);
+      vars.variables.deepsleep = 1;
+      vars.variables.continuesleep = 0;
+      for (int i = 0; i < 6; i++){
+        sleep(1000);
+        System.out.println(".");
+        vars.variables.minute += 10;
+        clock();
+      }
+    }
+    if (vars.variables.minute >= 60){
+      vars.variables.minute = 0;
+      vars.variables.hour++;
+      if (vars.variables.hour > 12){vars.variables.hour = 1;}
+    }
+    clstime(); //clearscreen, and display time
+    if (vars.variables.continuesleep == 0){
+      continue;
+    }
+    System.out.println(colors.ConsoleColors.BLUE_BRIGHT + "What will you do?" + colors.ConsoleColors.RESET);
+    System.out.println("1. Continue to sleep");
+    System.out.println("2. Wake up");
+    vars.variables.continuesleep = vars.variables.scan.nextInt();
+    if (vars.variables.continuesleep == 2){
+      wakeUp();
+    }
+    }
+  } //end eventsleep
+public static void sleep(int time){ //sleep function
+try{
+  Thread.currentThread().sleep(time);
+  }catch(Exception ex){}
+} // end sleep
+public static void cls() { //clear screen function
+    System.out.print("\033[H\033[2J");  
+    System.out.flush();  
+} // end cls
+public static void time(){//time function
+  if (vars.variables.minute == 0){
+      System.out.println(colors.ConsoleColors.CYAN_BRIGHT + "The time is now " + vars.variables.hour + ":00" + " " + vars.variables.time_of_day + colors.ConsoleColors.RESET);      
+    }else if (vars.variables.minute != 0){
+    System.out.println(colors.ConsoleColors.CYAN_BRIGHT + "The time is now " + vars.variables.hour + ":" + vars.variables.minute + vars.variables.time_of_day + colors.ConsoleColors.RESET);
+    }
+} // end time
+public static void wakeUp(){ //wake up
+  vars.variables.continuesleep = 0;
+      if (vars.variables.hour == 7 && (vars.variables.minute == 0 || vars.variables.minute == 10 || vars.variables.minute == 20 || vars.variables.minute == 30 || vars.variables.minute == 40 || vars.variables.minute == 50) && vars.variables.time_of_day == "AM"){
+        clstime(); //clearscreen, and display time
+        System.out.println(colors.ConsoleColors.PURPLE + "You wake up and get out of bed." + colors.ConsoleColors.RESET);
+        System.out.println(colors.ConsoleColors.RED_BRIGHT + "You feel sleep deprived." + colors.ConsoleColors.RESET);
+        vars.variables.deepsleep = 0;
+        vars.variables.sleepdeprived = 1;
+        vars.variables.late = 0;
+      } else if (vars.variables.hour == 8 && vars.variables.minute == 0 || vars.variables.minute == 10 || vars.variables.minute == 20 || vars.variables.minute == 30 || vars.variables.minute == 40 || vars.variables.minute == 50){
+        clstime(); //clearscreen, and display time
+        System.out.println(colors.ConsoleColors.PURPLE + "You wake up and get out of bed." + colors.ConsoleColors.RESET);
+        System.out.println(colors.ConsoleColors.GREEN_BRIGHT + "You feel well rested." + colors.ConsoleColors.RESET);
+        vars.variables.deepsleep = 1;
+        vars.variables.sleepdeprived = 0;
+        vars.variables.late = 1;
+      }
+}//end wakeUp
+public static void clock(){//clock function, calculates time
+  if (vars.variables.minute >= 60){//if minute is at 60 or above
+      vars.variables.minute = 0;//reset var minute to 0
+      vars.variables.hour++;
+      if (vars.variables.hour > 12){vars.variables.hour = 1;}
+    }//end clock
+}//end clock
+public static void pressAnyKeyToContinue()
+ { //press enter key to continue
+        System.out.println("Press Enter key to continue...");
+        try
+        {
+            System.in.read();
+        }  
+        catch(Exception e)
+        {}  
+ }//end pressAnyKeyToContinue
+public static void clstime(){// this function combines two existing functions together to make the code more compact
+  cls();//clearscreen
+  time();//display time
+}//end clstime
+public static void EventNews(){//NEWS EVENT
+      func.functions.cls();//clearscreen
+      System.out.println(colors.ConsoleColors.PURPLE + "You check the news." + colors.ConsoleColors.RESET);
+      for (int i = 0; i < 5; i++){//sleep 5 seconds
+      func.functions.sleep(1000);
+      System.out.println(".");
+      }//end for
+      vars.variables.minute += 10;//time passes 10 minutes
+      func.functions.clock();//calculate time
+      func.functions.clstime();//clearscreen, then display time
+      System.out.println(colors.ConsoleColors.CYAN + "The reporter says that overnight, the weather took an unexpected turn and the conditions outside are more dangerous than they have ever been. Everything is closed." + colors.ConsoleColors.RESET);
+      if (vars.variables.sleepdeprived == 1){//if player is not sleep deprived, then they are happy
+      System.out.println(colors.ConsoleColors.PURPLE + "There is no school for the rest of the week. You return to bed happy." + colors.ConsoleColors.RESET);
+      } else if (vars.variables.sleepdeprived == 0){//if player is sleep deprived, then they are happy that they can sleep
+        System.out.println(colors.ConsoleColors.PURPLE + "There is no school for the rest of the week. You rejoice in happiness." + colors.ConsoleColors.RESET);
+      }//end if
+}//end the news event
+public static void EventOutside(){ // outside event
+  vars.variables.minute += 10;//time passes 10 minutes
+  clock();//calculate time
+  clstime();//clearscreen, then display time
+  System.out.println(colors.ConsoleColors.PURPLE + "You get ready for school, and go outside to begin the walk." + colors.ConsoleColors.RESET);
+  for (int x = 0; x < 5; x++){//sleep for 5 seconds
+    sleep(1000);
+    System.out.println(".");
+  }//end for
+  clstime();//clearscreen, then display time
+  if (vars.variables.late == 1){ //player got out of bed at or after 8:00 AM
+    System.out.println(colors.ConsoleColors.PURPLE + "The conditions are hazardous, but you continue. You probably should have watched the news, but since you were already going to be late, you decided against it." + colors.ConsoleColors.RESET);
+  } else if (vars.variables.late != 1){ //player got out of bed before 8:00 AM
+    System.out.println(colors.ConsoleColors.PURPLE + "The conditions are hazardous, but you continue. You probably should have watched the news." + colors.ConsoleColors.RESET);
+  }//end if
+  for (int y = 0; y < 10; y++){ //sleep for 10 seconds
+    sleep(1000);
+    System.out.println(".");
+  }//end for
+  vars.variables.minute += 10; //time passes 10 minutes
+  clock();//calculate time
+  clstime();//clearscreen, then display time
+  for (int i = 0; i < 2; i++){ //sleep for two seconds
+  sleep(1000);
+  System.out.println(".");
+  }//end for
+  vars.variables.minute += 10; //time passes 10 minutes
+  clock(); //calculate time
+  clstime(); //clearscreen, then display time
+  if (vars.variables.sleepdeprived != 1){ //if the player is well rested, they will notice the patch of ice, and survive.
+    System.out.println(colors.ConsoleColors.PURPLE + "As you are walking, you notice a large patch of ice.\\n You manage to avoid it just in time, but you would have slipped and fell if you were to notice it any later." + colors.ConsoleColors.RESET);
+  } else if (vars.variables.sleepdeprived == 1){ //if the player is sleep deprived, they will fail to notice the patch of ice and die.
+    System.out.println(colors.ConsoleColors.PURPLE + "As you are walking, you start to notice yourself slip.\\n You look where you are walking, and realize that you are standing on a large sheet of ice, but by then it is already too late.\\n You slip, fall, and break your neck." + colors.ConsoleColors.RESET);
+    System.out.println(colors.ConsoleColors.RED_BRIGHT + "You Died." + colors.ConsoleColors.RESET);
+    //end here
+    System.exit(0); //System exit status 0
+  }//end if
+  vars.variables.minute += 10;//time passes 10 minutes
+  for (int z = 0; z < 10; z++){//sleep for 10 seconds
+    sleep(1000);
+    System.out.println(".");
+  }//end for
+  clock();//calculate time
+  clstime();//clearscreen, then display time
+  System.out.println(colors.ConsoleColors.PURPLE + "The conditions worsen." + "\n" + "They are getting to the point to where it is now dangerous to be outside." + colors.ConsoleColors.RESET);
+  System.out.println(colors.ConsoleColors.BLUE_BRIGHT + "What will you do?" + colors.ConsoleColors.RESET);
+  System.out.println("1. Continue walking");
+  System.out.println("2. Turn around and go home");
+  int choice3 = vars.variables.scan.nextInt();//choice 3
+  if (choice3 == 1){//player chooses to continue through hazardous weather
+    clstime();//clearscreen, then display time
+    System.out.println(colors.ConsoleColors.PURPLE + "Despite the extremely hazardous weather, you continue to walk to school. You fail to realize that school is probably cancelled." + colors.ConsoleColors.RESET);
+    for (int b = 0; b < 5; b++){//sleep for 5 seconds
+      sleep(1000);
+      System.out.println(".");
+      vars.variables.minute += 10;//time passes 10 minutes
+    }//end for
+    clock();//calculate time
+    clstime();//clearscreen, then display time
+    //player dies here
+    System.out.println(colors.ConsoleColors.PURPLE + "As you continue walking, a strong gust of wind pushes you forward." + "\n" +  "Coincidentally, there is another large patch of ice in front of you. You slip, fall, and break your neck." + colors.ConsoleColors.RESET);
+    System.out.println(colors.ConsoleColors.RED_BRIGHT + "You Died." + colors.ConsoleColors.RESET);
+    System.exit(0);//System exit status 0
+  }else if (choice3 == 2){//player chooses not to continue through hazardous weather
+    vars.variables.minute += 10;//time passes 10 minutes
+    clock();//calculate time
+  clstime();//clearscreen, then display time
+  System.out.println(colors.ConsoleColors.PURPLE + "You turn around, and start to walk back home." + colors.ConsoleColors.RESET);
+  for (int a = 0; a < 5; a++){//sleep for 5 seconds
+    sleep(1000);
+    System.out.println(".");
+    vars.variables.minute += 10;//time passes 10 minutes
+  }
+  clock();//calculate time
+  clstime();//clearscreen, then display time
+  //player lives
+  System.out.println(colors.ConsoleColors.GREEN_BRIGHT + "You make it home safely!" + colors.ConsoleColors.RESET);
+  }
+}// end the outside event
+public static void resetVars(){//if the player chooses to continue, reset all variables to their default values
+ vars.variables.main_flag = 1;
+ vars.variables.hour = 0;
+ vars.variables.minute = 0;
+ vars.variables.continuesleep = 0;
+ vars.variables.time_of_day = "";
+ vars.variables.deepsleep = 0;
+ vars.variables.sleepdeprived = 0;
+ vars.variables.late = 0;
+}//end resetvars
+}//end functions class
+}
