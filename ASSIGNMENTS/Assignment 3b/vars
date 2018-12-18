@@ -1,0 +1,14 @@
+import java.util.Scanner;
+class vars {
+    public static class variables {
+    public static int main_flag = 1;
+    public static int hour = 0;
+    public static int minute = 0;
+    public static int continuesleep = 0;
+    public static String time_of_day = " ";
+    public static int deepsleep = 0;
+    public static Scanner scan = new Scanner(System.in);
+    public static int sleepdeprived = 0;
+    public static int late = 0;
+    }
+}
