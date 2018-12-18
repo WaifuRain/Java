@@ -1,0 +1,87 @@
+import java.util.Scanner;
+class Main {
+public static void main(String[] args) {
+  func.functions.cls();
+  System.out.println(colors.ConsoleColors.CYAN_BRIGHT + "Welcome to this mini text-adventure!" + colors.ConsoleColors.RESET);
+  func.functions.pressAnyKeyToContinue();
+  while (vars.variables.main_flag != -1){ //main while loop
+  func.functions.resetVars();
+  func.functions.cls();
+  System.out.println(colors.ConsoleColors.CYAN_BRIGHT + "The Date is now December 17, 2018." + colors.ConsoleColors.RESET);
+  System.out.println(colors.ConsoleColors.CYAN_BRIGHT + "The time is now 7:10 AM" + colors.ConsoleColors.RESET);
+  vars.variables.hour = 7;
+  vars.variables.minute = 10;
+  vars.variables.time_of_day = "AM";
+  System.out.println(colors.ConsoleColors.PURPLE + "You must be in class by 8:20 AM." + colors.ConsoleColors.RESET);
+  System.out.println(colors.ConsoleColors.BLUE_BRIGHT + "What will you do?" + colors.ConsoleColors.RESET);//First Choice
+  System.out.println("1. Continue to sleep");
+  System.out.println("2. Wake up");
+  int choice1 = vars.variables.scan.nextInt();
+  if (choice1 == 1){
+  vars.variables.continuesleep = 1;
+  func.functions.EventSleep(); //run the sleep event
+    if (vars.variables.deepsleep == 1){
+      vars.variables.continuesleep = 0;
+      func.functions.cls();
+      func.functions.time();
+      System.out.println(colors.ConsoleColors.PURPLE + "You get out of bed." + colors.ConsoleColors.RESET);
+      System.out.println(colors.ConsoleColors.GREEN + "You feel well rested." + colors.ConsoleColors.RESET);
+      System.out.println(colors.ConsoleColors.BLUE_BRIGHT + "What will you do?" + colors.ConsoleColors.RESET);// NEXT EVENT STARTS HERE
+      System.out.println("1. Check the news");
+      System.out.println("2. Get ready, then go to school.");
+      int choice2 = vars.variables.scan.nextInt();
+      if (choice2 == 1){//choice2 if statement
+      func.functions.EventNews();
+      }else if (choice2 == 2){
+        //OutsideEvent Player should be Well Rested.
+        func.functions.EventOutside();
+      }
+    }else if(vars.variables.deepsleep != 1){
+      //No deep sleep, continue to choice 2
+      vars.variables.sleepdeprived = 1;
+      System.out.println(colors.ConsoleColors.BLUE_BRIGHT + "What will you do?" + colors.ConsoleColors.RESET);// NEXT EVENT STARTS HERE
+      System.out.println("1. Check the news");
+      System.out.println("2. Get ready, then go to school.");
+      int choice2 = vars.variables.scan.nextInt();
+      if (choice2 == 1){
+        func.functions.EventNews(); //news event
+      } else if (choice2 == 2){
+        func.functions.EventOutside(); //outside event
+      }
+    }
+    }else if (choice1 == 2){ //wake up sleep deprived
+      func.functions.wakeUp();
+      vars.variables.continuesleep = 0;
+      func.functions.cls();
+      func.functions.time();
+      System.out.println(colors.ConsoleColors.PURPLE + "You get out of bed." + colors.ConsoleColors.RESET);
+      System.out.println(colors.ConsoleColors.RED_BRIGHT + "You feel sleep deprived." + colors.ConsoleColors.RESET);
+      System.out.println(colors.ConsoleColors.BLUE_BRIGHT + "What will you do?" + colors.ConsoleColors.RESET);// NEXT EVENT STARTS HERE
+      System.out.println("1. Check the news");
+      System.out.println("2. Get ready, then go to school.");
+      int choice2 = vars.variables.scan.nextInt();
+      if (choice2 == 1){//choice2 if statement
+      func.functions.EventNews();
+      }else if (choice2 == 2){
+        //OutsideEvent Player is Sleep Deprived path
+        func.functions.EventOutside();
+      }
+  }else if (choice1 == 10){
+    func.functions.cls();
+    System.out.println(colors.ConsoleColors.WHITE_BOLD_BRIGHT + "Code information:" + colors.ConsoleColors.RESET);
+    System.out.println("Total lines of code: " + colors.ConsoleColors.CYAN_BRIGHT + "383" + colors.ConsoleColors.RESET);
+    System.out.println("Number of possible endings: " + colors.ConsoleColors.CYAN_BRIGHT + "5" + colors.ConsoleColors.RESET);
+    System.out.println("Number of events: " + colors.ConsoleColors.CYAN_BRIGHT + "3" + colors.ConsoleColors.RESET);
+    System.out.println("Number of functions: " + colors.ConsoleColors.CYAN_BRIGHT + "11" + colors.ConsoleColors.RESET);
+    System.out.println("Number of variables: " + colors.ConsoleColors.CYAN_BRIGHT + "63" + colors.ConsoleColors.RESET);
+    System.out.println("Prone to invalid input: " + colors.ConsoleColors.CYAN_BRIGHT + "Yes (because I'm lazy)" + colors.ConsoleColors.RESET);
+    System.exit(0);
+  }
+  System.out.println("Continue? 1[Yes] or -1[No]");
+  vars.variables.main_flag = vars.variables.scan.nextInt();
+  func.functions.cls();
+  }// end main while loop
+  func.functions.cls();
+  System.out.println(colors.ConsoleColors.CYAN_BRIGHT + "Thanks for playing!" + colors.ConsoleColors.RESET);
+  }// end main
+}// end main class
