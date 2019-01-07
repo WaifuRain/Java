@@ -1,57 +1,25 @@
-/*
- * Lesson 30 1/2 Coding Activity 
- * 
- * For this program you will input an int to represent the octal number 
- * and translate to the base ten number. The octal number must be 8 digits or less.
- * 
- * Your program should also check that all the digits are 0 - 7, then translate the 
- * number to base ten. 
- * 
- * Sample Run 1: 
- * Enter a number in base 8: 
- * 1287 
- * ERROR: Incorrect Octal Format 
- * 
- * Sample Run 2: 
- * Enter a number in base 8: 
- * 123 
- * 83 
- * 
- * Sample Run 3: 
- * Enter a number in base 8: 
- * 1111111111 
- * ERROR: Incorrect Octal Format
- *   
- */ 
-
 import java.util.Scanner;
-import java.lang.Math; 
+import java.lang.Math;
 
-class Lesson_1011_Activity{ // Begin Class
-  public static void main(String[] args)
-  { // Begin main
+class Lesson_1011_Activity
+{
+  public static void main (String str[])
+  {
     Scanner scan = new Scanner(System.in);
-    System.out.println("Enter a number in base 8");
-    String base8 = scan.nextLine();
-    int valid = 1;
-    if (base8.length() <= 8){ // begin if
-      for(int i = 0; i < base8.length(); i++){ // begin for
-        if(base8.charAt(i) > 0 && base8.charAt(i) < 8){ // begin nested if
-          valid = 1;
-        } else { // begin nested else
-          valid = 0; 
-        } // end nested else
-      } // end for
-    } // end if
-    if (valid == 1){ // begin second if
-      
-    } else { // begin second else
-      System.out.println("ERROR: Incorrect Octal Format");
-    } // end second else
-  } // End main
-} // End Class
-
-
-#THIS IS NOT FINISHED, DON'T COPY IT
-#THIS IS NOT FINISHED, DON'T COPY IT
-#THIS IS NOT FINISHED, DON'T COPY IT
+    System.out.println("Enter a number in base 8: ");
+    String oct1 = scan.nextLine();
+    
+    for (int i = 0; i < oct1.length(); i++){
+      if (i >= 8 || !(oct1.charAt(i) >= '0' && oct1.charAt(i) <= '7')){
+        System.out.println("ERROR: Incorrect Octal Format");
+        return;
+      }
+    }
+    int a = 0;
+    int highestPower = oct1.length()-1;
+    for (int i = 0; i < oct1.length(); i++){
+      a += ((oct1.charAt(i)) -48) * Math.pow(8, highestPower-i); 
+    }
+    System.out.println(a);
+  }
+}
