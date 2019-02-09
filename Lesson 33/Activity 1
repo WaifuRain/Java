@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+class Lesson_33_Activity_One {
+  
+    public static void upper(String arg1[])
+    {
+    	for(int i = 0; i < arg1.length; i++)
+    	{
+    		arg1[i] = arg1[i].toUpperCase();
+    	}//walk through array
+    } //upper
+  
+    public static void main(String[] args)
+     {
+    	Scanner scan = new Scanner(System.in);
+    	String [] list = {"hello","test"};
+    	for(int x = 0; x < list.length; x++)
+    	{
+    		System.out.println(list[x]);
+    	}
+    	
+    	upper(list);
+    	
+    	for(int x = 0; x < list.length; x++)
+    	{
+    		System.out.println(list[x]);
+    	}
+    }
+}
