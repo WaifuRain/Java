@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+class Lesson_32_Activity_Four {
+	//seconds in a day 86400
+	//seconds in an hour 3600
+	//seconds in a minute 60
+	public static void realTime(int arg1) {
+		int hours, minutes, seconds;
+		System.out.println("Hours: " + ((arg1 % 86400) / 3600) + "\n" + "Minutes: " + (((arg1 % 86400) % 3600) / 60) + "\n" + "Seconds: " + (((arg1 % 86400) % 3600) % 60));
+	}
+        public static void main(String[] args)
+        {
+        realTime(6342);
+        }
+}
