@@ -1,0 +1,14 @@
+import java.util.Scanner;
+
+class Lesson_32_Activity_Three {
+      
+         public static void swap(int arg1, int arg2) {
+        	 System.out.print(arg2 + " ");
+        	 System.out.print(arg1);
+         }
+        
+        public static void main(String[] args)
+         {
+         swap(3,7);
+         }
+}
