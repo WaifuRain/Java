@@ -1,21 +1,28 @@
 import java.util.Scanner;
 
 class Lesson_33_Activity_Five {
-	
-	 public static void printit(int list[])
-	    {
-	    	for(int i = 0; i < list.length; i++)
-	    	{
-	    		System.out.print(list[i] + " ");
-	    	}
-	    }
+ 
+  public static void printit(int list[])
+     {
+      for(int i = 0; i < list.length; i++)
+      {
+       System.out.print(list[i] + " ");
+      }
+     }
   
     public static void insertValue(int array[], int value, int index)
     {
-    	if (!(index >= array.length))
-    	{
-    		array[index] = value;
-    	}
+      int[] newArray = new int[array.length];
+      for(int i = 0; i < index; i++)
+      {
+        newArray[i] = array[i];
+      }
+        newArray[index] = value;
+      for(int i = index + 1; i < array.length; i++)
+      {
+        newArray[i] = array[i - 1];
+      }
+      System.arraycopy(newArray, 0, array, 0, newArray.length);
     }
   
     public static void main(String[] args)
@@ -25,9 +32,8 @@ class Lesson_33_Activity_Five {
      printit(list);
      System.out.println("\n");
      
-     insertValue(list, 100, 1);
+     insertValue(list, 100, 5);
      
      printit(list);
-     
     }
 }
