@@ -1,4 +1,70 @@
-this
-is
-a
-test
+import java.util.*;
+import java.io.*;
+
+
+
+
+class Main{
+	public static void writeToFile(String user, String name, int[] content) throws FileNotFoundException, UnsupportedEncodingException {
+		PrintWriter writer = new PrintWriter("C:\\Users\\"+user+"\\Desktop\\"+name+".txt", "UTF-8");
+		for(int i = 0; i < content.length; i++) {
+			writer.println(content[i]);
+		}
+		writer.close();
+	}
+	public static void createFile(int[] list) {
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Input your username:");
+		String username = scan.nextLine();
+		System.out.println("Input a file name, this will create a new file..");
+		String fileName = scan.nextLine();
+		
+		try {
+			writeToFile(username,fileName,list);
+		} catch (FileNotFoundException e) {
+			System.err.println("FileNotFoundException"+"\n"+e);
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			System.err.println("UnsupportedEncodingException"+"\n"+e);
+			e.printStackTrace();
+		} finally {
+			scan.close();
+		}
+	}
+	public static int[] createList() {
+		Scanner scan = new Scanner(System.in);
+		
+		int[] list = new int[1000];
+		int flag = 0;
+		int count = 0;
+		
+		while(flag != 1000 || count == -1) {
+			for(int i = 0; i < 1000; i++) {
+				try {
+					System.out.println("Enter a value: ");
+					list[i] = scan.nextInt();
+					if (list[i] == -1) {
+						count = -1;
+					}
+					i++;
+				} catch (InputMismatchException e){
+					System.out.println("InputMismatchException; Not a Number!");
+					e.printStackTrace();
+				} finally {
+					scan.close();
+				}
+			}
+			flag++;
+		}//end while
+		return list;
+	}
+	
+	
+	public static void main(String []args) 
+	{	
+		createFile(createList());
+		
+	}//end of main
+	
+}
