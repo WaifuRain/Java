@@ -1,7 +1,19 @@
-import java.util.*;
-import java.io.*;
+/*
+ * Purpose: The purpose of this program is to take information as integers input by the user, then output said information to a file.
+ * 
+ * Inputs:
+ * - The amount of values the user will enter (as an integer)
+ * - The Values themselves (as an array of integers)
+ * - The user's user name (as a String)
+ * - The User's choice of filename (as a String)
+ * 
+ * Outputs:
+ * - A text(.txt) file with a custom name defined by the user, encoded in UTF-8; Comprised of the data previously input by the user, each value on a different line.
+ * - The text(.txt) file will be stored on the User's desktop, at this file location --> C:\Users\<the users user name>\Desktop <--.
+ */
 
-
+import java.util.*; // https://docs.oracle.com/javase/7/docs/api/java/util/package-summary.html
+import java.io.*; // https://docs.oracle.com/javase/7/docs/api/java/io/package-summary.html
 
 
 class Main{
@@ -12,6 +24,7 @@ class Main{
 		}
 		writer.close();
 	}
+	
 	public static void createFile(int[] list) {
 		Scanner scan = new Scanner(System.in);
 		
@@ -32,30 +45,29 @@ class Main{
 			scan.close();
 		}
 	}
+	
 	public static int[] createList() {
 		Scanner scan = new Scanner(System.in);
-		
-		int[] list = new int[1000];
-		int flag = 0;
 		int count = 0;
+		System.out.println("How many values would you like to enter?");
+		int stop = scan.nextInt();
+		int[] list = new int[stop];
 		
-		while(flag != 1000 || count == -1) {
-			for(int i = 0; i < 1000; i++) {
+		while(count != stop) {
+			for(int i = 0; i < stop; i++) {
 				try {
 					System.out.println("Enter a value: ");
 					list[i] = scan.nextInt();
-					if (list[i] == -1) {
-						count = -1;
-					}
 					i++;
+					count++;
 				} catch (InputMismatchException e){
-					System.out.println("InputMismatchException; Not a Number!");
+					System.out.println("InputMismatchException; Not a Number!"+"\n"+e);
 					e.printStackTrace();
 				} finally {
-					scan.close();
+					//scan.close(); //creates errors??
 				}
 			}
-			flag++;
+			
 		}//end while
 		return list;
 	}
