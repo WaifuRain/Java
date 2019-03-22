@@ -17,6 +17,14 @@ import java.io.*; // https://docs.oracle.com/javase/7/docs/api/java/io/package-s
 
 
 class Writer{
+	/*
+	 * method: writeToFile
+	 * Purpose: Takes content from int array and outputs line by line in a newly created custom named text file on the user's desktop
+	 * Parameters: user, name, content;
+	 * user: String, defined in method createFile; used to specify user name in file location
+	 * name: String, defined in method createFile; used to specify a custom file name
+	 * content: Array of Integers, returned from method createList; can hold a custom amount of items 
+	 */
 	public static void writeToFile(String user, String name, int[] content) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter("C:\\Users\\"+user+"\\Desktop\\"+name+".txt", "UTF-8");
 		for(int i = 0; i < content.length; i++) {
@@ -25,6 +33,15 @@ class Writer{
 		writer.close();
 	}
 	
+	/*
+	 * method: createFile
+	 * Purpose: Takes user input and defines the paramaters for making a file before doing so in method writeToFile
+	 * Inputs: username,fileName;
+	 * username: String, used to define 'user' for method writeToFile
+	 * fileName: String, used to define 'name' for method writeToFile
+	 * Parameters: list;
+	 * list: Array of Integers, called from main method; used to pass to method writeToFile
+	 */
 	public static void createFile(int[] list) {
 		Scanner scan = new Scanner(System.in);
 		
@@ -46,6 +63,13 @@ class Writer{
 		}
 	}
 	
+	/*
+	 * method: createList
+	 * returns: Array of Integers
+	 * Inputs: stop;
+	 * stop: integer, used to define amount of values in 'list', and to define a stopping point for the for loop
+	 * purpose: Creates an array of integers with a max value defined by the user, and returns it
+	 */
 	public static int[] createList() {
 		Scanner scan = new Scanner(System.in);
 		int count = 0;
@@ -80,11 +104,13 @@ class Writer{
 		
 	}//end of main
 	
-}
+}//end of Writer class
 
-class Reader{
-	public static void main(String []args) {
-		System.out.println("Hello");
-	}
-	//a reader might go here?
-}
+//ignore under this line
+
+//class Reader{
+//	public static void main(String []args) {
+//		System.out.println("Hello");
+//	}
+//	//a reader might go here?
+//}
