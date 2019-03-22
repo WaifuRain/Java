@@ -1,0 +1,90 @@
+/*
+ * Purpose: The purpose of this program is to take information as integers input by the user, then output said information to a file.
+ * 
+ * Inputs:
+ * - The amount of values the user will enter (as an integer)
+ * - The Values themselves (as an array of integers)
+ * - The user's user name (as a String)
+ * - The User's choice of filename (as a String)
+ * 
+ * Outputs:
+ * - A text(.txt) file with a custom name defined by the user, encoded in UTF-8; Comprised of the data previously input by the user, each value on a different line.
+ * - The text(.txt) file will be stored on the User's desktop, at this file location --> C:\Users\<the users user name>\Desktop <--.
+ */
+
+import java.util.*; // https://docs.oracle.com/javase/7/docs/api/java/util/package-summary.html
+import java.io.*; // https://docs.oracle.com/javase/7/docs/api/java/io/package-summary.html
+
+
+class Writer{
+	public static void writeToFile(String user, String name, int[] content) throws FileNotFoundException, UnsupportedEncodingException {
+		PrintWriter writer = new PrintWriter("C:\\Users\\"+user+"\\Desktop\\"+name+".txt", "UTF-8");
+		for(int i = 0; i < content.length; i++) {
+			writer.println(content[i]);
+		}
+		writer.close();
+	}
+	
+	public static void createFile(int[] list) {
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Input your username:");
+		String username = scan.nextLine();
+		System.out.println("Input a file name, this will create a new file..");
+		String fileName = scan.nextLine();
+		
+		try {
+			writeToFile(username,fileName,list);
+		} catch (FileNotFoundException e) {
+			System.err.println("FileNotFoundException"+"\n"+e);
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			System.err.println("UnsupportedEncodingException"+"\n"+e);
+			e.printStackTrace();
+		} finally {
+			scan.close();
+		}
+	}
+	
+	public static int[] createList() {
+		Scanner scan = new Scanner(System.in);
+		int count = 0;
+		System.out.println("How many values would you like to enter?");
+		int stop = scan.nextInt();
+		int[] list = new int[stop];
+		
+		while(count != stop) {
+			for(int i = 0; i < stop; i++) {
+				try {
+					System.out.println("Enter a value: ");
+					list[i] = scan.nextInt();
+					i++;
+					count++;
+				} catch (InputMismatchException e){
+					System.out.println("InputMismatchException; Not a Number!"+"\n"+e);
+					e.printStackTrace();
+				} finally {
+					//scan.close(); //creates errors??
+				}
+			}
+			
+		}//end while
+		return list;
+	}
+	
+	
+	public static void main(String []args) 
+	{	
+		createFile(createList());
+		//Reader.main(null); //ignore
+		
+	}//end of main
+	
+}
+
+class Reader{
+	public static void main(String []args) {
+		System.out.println("Hello");
+	}
+	//a reader might go here?
+}
