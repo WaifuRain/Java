@@ -25,7 +25,7 @@ class Writer{
 	 * name: String, defined in method createFile; used to specify a custom file name
 	 * content: Array of Integers, returned from method createList; can hold a custom amount of items 
 	 */
-	public static void writeToFile(String user, String name, int[] content) throws FileNotFoundException, UnsupportedEncodingException {
+	public static void writeToFile(String user, String name, String[] content) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter("C:\\Users\\"+user+"\\Desktop\\"+name+".txt", "UTF-8");
 		for(int i = 0; i < content.length; i++) {
 			writer.println(content[i]);
@@ -42,7 +42,7 @@ class Writer{
 	 * Parameters: list;
 	 * list: Array of Integers, called from main method; used to pass to method writeToFile
 	 */
-	public static void createFile(int[] list) {
+	public static void createFile(String[] list) {
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("Input your username:");
@@ -70,27 +70,21 @@ class Writer{
 	 * stop: integer, used to define amount of values in 'list', and to define a stopping point for the for loop
 	 * purpose: Creates an array of integers with a max value defined by the user, and returns it
 	 */
-	public static int[] createList() {
+	public static String[] createList() {
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		int count = 0;
 		System.out.println("How many values would you like to enter?");
 		int stop = scan.nextInt();
-		int[] list = new int[stop];
+		String[] list = new String[stop];
 		
-		while(count != stop) {
-			for(int i = 0; i < stop; i++) {
+		while(count < stop) {
 				try {
 					System.out.println("Enter a value: ");
-					list[i] = scan.nextInt();
-					i++;
-					count++;
-				} catch (InputMismatchException e){
-					System.out.println("InputMismatchException; Not a Number!"+"\n"+e);
-					e.printStackTrace();
+					list[count] = scan.nextLine();
 				} finally {
-					//scan.close(); //creates errors??
+					count++;
 				}
-			}
 			
 		}//end while
 		return list;
@@ -106,11 +100,11 @@ class Writer{
 	
 }//end of Writer class
 
-//ignore under this line
 
-//class Reader{
-//	public static void main(String []args) {
-//		System.out.println("Hello");
-//	}
-//	//a reader might go here?
-//}
+
+class Reader{
+	public static void main(String []args) {
+		System.out.println("Hello");
+	}
+	//a reader might go here?
+}
