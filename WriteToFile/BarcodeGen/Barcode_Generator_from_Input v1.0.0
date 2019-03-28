@@ -1,17 +1,8 @@
 import java.util.*; // https://docs.oracle.com/javase/7/docs/api/java/util/package-summary.html
+
 import java.io.*; // https://docs.oracle.com/javase/7/docs/api/java/io/package-summary.html
 
-import net.sourceforge.barbecue.BarcodeException;
-import net.sourceforge.barbecue.BarcodeFactory; // http://barbecue.sourceforge.net/apidocs/net/sourceforge/barbecue/BarcodeFactory.html
-
-
-
-/* //TO DO
- * https://stackoverflow.com/questions/1700597/barcode-image-generator-in-java
- *  read and correctly output text from file designated in method writeToFile
- *  
- *  http://www.onbarcode.com/tutorial/java-barcode-generation.html#2
- */
+import com.onbarcode.barcode.Code39; // http://www.onbarcode.com/products/java_barcode/barcodes/code_39.html
 
 class Writer{
 	
@@ -19,9 +10,9 @@ class Writer{
 	static String userName = "";
 	static int numBarcodes = 0;
 	
-	public static void writeToFile(String user, String name, String[] content) throws FileNotFoundException, UnsupportedEncodingException {
-		PrintWriter writer = new PrintWriter("C:\\Users\\"+user+"\\Desktop\\"+name+".txt", "UTF-8");
-		path = "C:\\Users\\"+user+"\\Desktop\\"+name+".txt";
+	public static void writeToFile(String user, String[] content) throws FileNotFoundException, UnsupportedEncodingException {
+		PrintWriter writer = new PrintWriter("C:\\Users\\"+user+"\\Desktop\\log.txt", "UTF-8");
+		path = "C:\\Users\\"+user+"\\Desktop\\log.txt";
 		userName = user;
 		for(int i = 0; i < content.length; i++) {
 			writer.println(content[i]);
@@ -33,13 +24,11 @@ class Writer{
 	public static void createFile(String[] list) {
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("Input your username:");
+		System.out.print("Input your username: ");
 		String username = scan.nextLine();
-		System.out.println("Input a file name, this will create a new file..");
-		String fileName = scan.nextLine();
 		
 		try {
-			writeToFile(username,fileName,list);
+			writeToFile(username,list);
 		} catch (FileNotFoundException e) {
 			System.err.println("FileNotFoundException"+"\n"+e);
 			e.printStackTrace();
@@ -71,23 +60,40 @@ class Writer{
 	}
 	
 	
-	public static void main(String []args) throws BarcodeException 
+	public static void main(String []args)
 	{	
-		//Reader.main(null);
-		System.out.print(BarcodeFactory.createCode39("60350337",true));
 		createFile(createList());
-		
-		
-	}//end of main
+	}//end main
 	
 }//end writer class
 
 class Reader{
+	static String directory = "";
+	
+	public static void gen39(String []list) throws Exception {
+		Code39 barcode = new Code39();
+		int count = 0;
+		for (int i = 0; i < list.length; i++) {
+			barcode.setData(list[i]);
+			barcode.drawBarcode(directory+"\\"+list[i]+".jpg");
+			count++;
+		}
+		File file = new File(Writer.path);
+		if (file.delete()) {
+			System.out.println("\nFile: " + Writer.path + " Successfully Deleted!\n");
+		} else {
+			System.out.println("\nFile: " + Writer.path + " Does not exist.");
+		}
+		
+		System.out.print(count + " barcodes Generated @ location: \n " + directory);
+	}
+	
 	public static void createDir() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter a folder name: ");
 		String folderName = scan.nextLine();
 		File dir = new File("C:\\Users\\"+Writer.userName+"\\Desktop\\"+folderName);
+		directory = ("C:\\Users\\"+Writer.userName+"\\Desktop\\"+folderName);
 		dir.mkdir();
 		scan.close();
 	}
@@ -96,7 +102,6 @@ class Reader{
 		File file = new File(path);
 		Scanner scan = new Scanner(file);
 		String [] barcodeList = new String[Writer.numBarcodes];
-		//scan.hasNextLine()
 		for(int i = 0; i < Writer.numBarcodes; i++) {
 			barcodeList[i] = scan.nextLine();
 		}
@@ -105,10 +110,12 @@ class Reader{
 	}
 	
 	public static void main(String []args) {
-		try {
-			readFromFile(Writer.path);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+			createDir();
+			try {
+				gen39(readFromFile(Writer.path));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
+	
 }
